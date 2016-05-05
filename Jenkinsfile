@@ -14,7 +14,7 @@ node {
 		sh "${docker_run} chown -R 1000:1000 ."
 
 		stage "Build docker image"
-		def app = "simple-aspnet"
+		def app = "aspnet-hello"
 		def tag = "${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 		echo "Tagging docker image ${app}:${tag}"
 		sh "docker build -t ${app}:${tag} ."

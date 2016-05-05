@@ -8,7 +8,7 @@ node {
 		stage "Build project"
 		def aspnet = "microsoft/aspnet:1.0.0-rc1-update1-coreclr"
 		def dnxframework = "dnxcore50"
-		def docker_run = "docker run --rm -v aspnetci_jenkins_data:/var/jenkins_home -v dnx:/root/.dnx -w ${pwd()} ${aspnet}"
+		def docker_run = "docker run --rm -v aspnetci_jenkins_data:/var/jenkins_home -v aspnetci_dnx:/root/.dnx -w ${pwd()} ${aspnet}"
 		sh "${docker_run} dnu restore"
 		sh "${docker_run} dnu publish --framework ${dnxframework}"
 		sh "${docker_run} chown -R 1000:1000 ."
